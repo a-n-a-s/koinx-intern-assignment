@@ -34,7 +34,7 @@ This engine was specifically designed to handle "messy" real-world data. The fol
    ```
 
 2. **Environment Variables:**
-   Create a `.env` file in the root directory:
+   Create a `.env` file in the src directory:
    ```env
    PORT=3000
    MONGO_URI=mongodb://localhost:27017/koinx-reconciliation
