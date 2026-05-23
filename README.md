@@ -29,61 +29,61 @@ This engine was specifically designed to handle "messy" real-world data. The fol
 ## 🛠️ Setup & Installation
 
 1. **Clone the repository and install dependencies:**
-   \`\`\`bash
+   ```bash
    npm install
-   \`\`\`
+   ```
 
 2. **Environment Variables:**
    Create a `.env` file in the root directory:
-   \`\`\`env
+   ```env
    PORT=3000
    MONGO_URI=mongodb://localhost:27017/koinx-reconciliation
    TIMESTAMP_TOLERANCE_SECONDS=300
    QUANTITY_TOLERANCE_PCT=0.01
-   \`\`\`
+   ```
 
 3. **Run the server:**
-   \`\`\`bash
+   ```bash
    # Development mode with hot-reload
    npm run dev
    
    # Or directly
    node src/server.js
-   \`\`\`
+   ```
 
 ## 📖 API Documentation
 
 ### 1. Trigger Reconciliation
-\`POST /api/reconcile\`
+`POST /api/reconcile`
 Initiates the ingestion and matching process. Accepts optional config overrides.
 
 **Request Body (Optional):**
-\`\`\`json
+```json
 {
   "timestampToleranceSeconds": 600,
   "quantityTolerancePct": 0.05
 }
-\`\`\`
+```
 
 **Response:**
-\`\`\`json
+```json
 {
   "success": true,
   "message": "Reconciliation process started",
   "runId": "uuid-v4-string"
 }
-\`\`\`
+```
 
 ### 2. Get Full Report
-\`GET /api/report/:runId\`
+`GET /api/report/:runId`
 Returns the complete structured reconciliation report including all categorized transactions.
 
 ### 3. Get Report Summary
-\`GET /api/report/:runId/summary\`
+`GET /api/report/:runId/summary`
 Returns a lightweight overview of the results.
 
 **Response:**
-\`\`\`json
+```json
 {
   "success": true,
   "data": {
@@ -93,10 +93,10 @@ Returns a lightweight overview of the results.
     "unmatchedExchange": 3
   }
 }
-\`\`\`
+```
 
 ### 4. Get Unmatched Transactions
-\`GET /api/report/:runId/unmatched\`
+`GET /api/report/:runId/unmatched`
 Returns only the transactions that failed to find a pair, along with the reasons.
 
 ## 📈 Scalability Considerations (Future Scope)
